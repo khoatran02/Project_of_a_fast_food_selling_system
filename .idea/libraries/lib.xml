@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/poi-4.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-collections4-4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.49.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/itextpdf-5.5.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/LGoodDatePicker-10.4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
