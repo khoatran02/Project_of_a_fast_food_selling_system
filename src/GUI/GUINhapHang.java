@@ -28,13 +28,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.plaf.FontUIResource;
 
-/**
- *
- * @author Nguyen
- */
 public class GUINhapHang extends GUIFormBanNhap{
     //Tạo mảng tiêu đề của bảng nguyên liệu
-    private static String array_NguyenLieu[]={"Mã nguyên liệu","Tên","Đơn giá","Loại","Đơn vị tính","Số lượng"};
+    private static String array_NguyenLieu[]={"Mã nguyên liệu","Tên","Đơn giá","Hình ảnh","Loại","Đơn vị tính","Số lượng"};
     //Tạo bảng nguyên liệu để nhân viên chọn danh sách và add lên bảng thanh toán
     private GUIMyTable table_NguyenLieu,ThanhToan;
     //Tạo Panel để show thông tin nguyên liệu và để chứa thanh tìm kiếm
@@ -84,7 +80,10 @@ public GUINhapHang(){
         table_NguyenLieu.setHeaders(array_NguyenLieu);              
         docDB();
         table_NguyenLieu.pane.setPreferredSize(new Dimension(GUImenu.width_content*50/100, 300));
-        double [] tilerow = {20 , 23 , 13 , 12 , 15,12}; // set tỉ lệ các cột, tổng các phần tử = 100
+        double [] tilerow = {20 , 23 , 13, 0 , 12 , 15,12}; // set tỉ lệ các cột, tổng các phần tử = 100
+        table_NguyenLieu.tb.getColumnModel().getColumn(3).setMinWidth(0); // Ẩn cột hình ảnh
+        table_NguyenLieu.tb.getColumnModel().getColumn(3).setMaxWidth(0);
+        table_NguyenLieu.tb.getColumnModel().getColumn(3).setWidth(0);
         table_NguyenLieu.setColumnsWidth(tilerow);
         return table_NguyenLieu;
     }
@@ -333,7 +332,9 @@ public GUINhapHang(){
         JPanel panel=new JPanel();
         ThanhToan=new GUIMyTable();
         ThanhToan.setHeaders(new String[]{"Mã nguyên liệu","Tên nguyên liệu","Giá","Loại","Số lượng"});//chỗ này bỏ hình ảnh và đơn vị tính vì không cần
-        ThanhToan.pane.setPreferredSize(new Dimension(GUImenu.width_content*49/100, 300));        
+        ThanhToan.pane.setPreferredSize(new Dimension(GUImenu.width_content*49/100, 300));      
+        double [] tilerow = {20 , 23 , 13 , 12 , 15,12}; // set tỉ lệ các cột, tổng các phần tử = 100
+        ThanhToan.setColumnsWidth(tilerow);  
         panel.add(ThanhToan);
           
         ShowMenuOnlyXoa(ThanhToan);
@@ -365,7 +366,7 @@ public GUINhapHang(){
                         String.valueOf(table_NguyenLieu.tbModel.getValueAt(i, 0)),
                         String.valueOf(table_NguyenLieu.tbModel.getValueAt(i, 1)),
                         String.valueOf(table_NguyenLieu.tbModel.getValueAt(i, 2)),
-                        String.valueOf(table_NguyenLieu.tbModel.getValueAt(i, 3)),
+                        String.valueOf(table_NguyenLieu.tbModel.getValueAt(i, 4)),
                         String.valueOf(a)
                     });
                     TinhTien();

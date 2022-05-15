@@ -693,7 +693,7 @@ public class GUIKhuyenMai extends GUIFormContent {
             JOptionPane.showMessageDialog(null, "Tiền giảm giá không được chứa ký tự đặc biệt");
             txt_KhuyenMai_Sua[2].requestFocus();
         } else if (!Tool.isTenThousandToOneMil(tienGiamGia)) {
-            JOptionPane.showMessageDialog(null, "Tiền giảm giá phải nằm trong khoảng 10.000 đến 1.000.000");
+            JOptionPane.showMessageDialog(null, "Tiền giảm giá phải nằm trong khoảng 0 đến 1.000.000");
             txt_KhuyenMai_Sua[2].requestFocus();
         } else if (!Tool.isName(Tool.removeAccent(noiDung))) {
             JOptionPane.showMessageDialog(null, "Nội dung khuyến mãi không được chứa ký tự đặc biệt");

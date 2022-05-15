@@ -41,7 +41,7 @@ import org.apache.poi.ss.formula.functions.T;
 //Class này được kế thừa từ GUIFormBanNhap , các bố cục đã được sắp xếp sẵn ở bên đó
 public class GUIBanHang extends GUIFormBanNhap{
     //Tạo mảng tiêu đề của bảng món ăn
-    private static String array_MonAn[]={"Mã món ăn","Tên món","Đơn vị tính","Giá","Loại","SL"};
+    private static String array_MonAn[]={"Mã món ăn","Tên món","Đơn vị tính","Giá","Hình ảnh","Loại","SL"};
     //Tạo bảng món ăn để nhân viên chọn danh sách món và add lên bảng thanh toán
     private GUIMyTable table_MonAn,ThanhToan;
     //Tạo Panel để show thông tin món ăn và để chứa thanh tìm kiếm
@@ -99,7 +99,10 @@ public class GUIBanHang extends GUIFormBanNhap{
         table_MonAn.setHeaders(array_MonAn);           
         docDB();                  
         table_MonAn.pane.setPreferredSize(new Dimension(GUImenu.width_content*50/100, 300));
-        double [] tilerow = {15 , 30 , 18 , 12 , 15,10}; // set tỉ lệ các cột, tổng các phần tử = 100
+        double [] tilerow = {15 , 30 , 18 , 12,0 , 15,10}; // set tỉ lệ các cột, tổng các phần tử = 100
+        table_MonAn.tb.getColumnModel().getColumn(4).setMinWidth(0); // Ẩn cột hình ảnh
+        table_MonAn.tb.getColumnModel().getColumn(4).setMaxWidth(0);
+        table_MonAn.tb.getColumnModel().getColumn(4).setWidth(0);
         table_MonAn.setColumnsWidth(tilerow);
         return table_MonAn;
     }
@@ -392,6 +395,8 @@ public class GUIBanHang extends GUIFormBanNhap{
         ThanhToan.setHeaders(new String[]{"Mã món","Tên món","Giá","Loại","Số lượng"});//chỗ này bỏ hình ảnh và đơn vị tính vì không cần
         
         ThanhToan.pane.setPreferredSize(new Dimension(GUImenu.width_content*49/100, 300));        
+        double [] tilerow = {15 , 30 , 18 , 12 , 15,10}; // set tỉ lệ các cột, tổng các phần tử = 100
+        ThanhToan.setColumnsWidth(tilerow);
         
         panel.add(ThanhToan);
 
@@ -408,7 +413,7 @@ public class GUIBanHang extends GUIFormBanNhap{
         }
         else
         {
-            int SlTrongTable=Integer.parseInt(String.valueOf(table_MonAn.tbModel.getValueAt(i, 5)));
+            int SlTrongTable=Integer.parseInt(String.valueOf(table_MonAn.tbModel.getValueAt(i, 6)));
             //Rào việc đặt số lượng lớn hơn số hiện có
             if(a>SlTrongTable)
             {
@@ -436,10 +441,10 @@ public class GUIBanHang extends GUIFormBanNhap{
                     }
                 }
                 ThanhToan.addRow(new String[]{
-                        String.valueOf(table_MonAn.tbModel.getValueAt(i, 0)),
+                        String.valueOf(table_MonAn.tbModel.getValueAt(i, 0)), 
                         String.valueOf(table_MonAn.tbModel.getValueAt(i, 1)),
                         String.valueOf(table_MonAn.tbModel.getValueAt(i, 3)),
-                        String.valueOf(table_MonAn.tbModel.getValueAt(i, 4)),
+                        String.valueOf(table_MonAn.tbModel.getValueAt(i, 5)),
                         String.valueOf(a)
                 });
                 TinhTien();
@@ -605,88 +610,88 @@ public class GUIBanHang extends GUIFormBanNhap{
         }
     }
 
-        // Hiển thị menu thêm
-        public void ShowMenuOnlyThem(GUIMyTable table){
-            table.getTable().addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseReleased(MouseEvent me) {
-                    int r = table.getTable().rowAtPoint (me.getPoint ());
-                    if (r >= 0 && r < table.getTable().getRowCount()) {
-                        table.getTable().setRowSelectionInterval (r, r);
-                    } else  {
-                        table.getTable().clearSelection ();
-                    }
-    
-                    int rowIndex = table.getTable().getSelectedRow ();
-                    if (rowIndex <0)
-                        return;
-                    if (me.isPopupTrigger () && me.getComponent () instanceof JTable) {
-                        JPopupMenu popupTMenu = createPopUpThem (rowIndex, table);
-                        popupThem.show (me.getComponent (), me.getX (), me.getY ());
-                    }
+    // Hiển thị menu thêm
+    public void ShowMenuOnlyThem(GUIMyTable table){
+        table.getTable().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                int r = table.getTable().rowAtPoint (me.getPoint ());
+                if (r >= 0 && r < table.getTable().getRowCount()) {
+                    table.getTable().setRowSelectionInterval (r, r);
+                } else  {
+                    table.getTable().clearSelection ();
                 }
-            });
-        }
-    
-        // Khởi tạo popup menu thêm
-        public JPopupMenu createPopUpThem (int rowIndex, GUIMyTable Table) {
-    
-            menuThem = new JMenuItem("Thêm");
-            menuThem.setIcon(new ImageIcon("src/Images/Icon/icons8_add_16px.png"));
-    
-            popupThem = new JPopupMenu();
-            menuThem.addMouseListener(new MouseAdapter(){
-                @Override
-                public void mousePressed(MouseEvent evt){
-                    Them_click(evt);
+
+                int rowIndex = table.getTable().getSelectedRow ();
+                if (rowIndex <0)
+                    return;
+                if (me.isPopupTrigger () && me.getComponent () instanceof JTable) {
+                    JPopupMenu popupTMenu = createPopUpThem (rowIndex, table);
+                    popupThem.show (me.getComponent (), me.getX (), me.getY ());
                 }
-            });
+            }
+        });
+    }
     
-            popupThem.add(menuThem);
-            return popupThem;
-        }
+    // Khởi tạo popup menu thêm
+    public JPopupMenu createPopUpThem (int rowIndex, GUIMyTable Table) {
+
+        menuThem = new JMenuItem("Thêm");
+        menuThem.setIcon(new ImageIcon("src/Images/Icon/icons8_add_16px.png"));
+
+        popupThem = new JPopupMenu();
+        menuThem.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent evt){
+                Them_click(evt);
+            }
+        });
+
+        popupThem.add(menuThem);
+        return popupThem;
+    }
     
-        // Hiển thị menu xóa
-        public void ShowMenuOnlyXoa(GUIMyTable table){
-            table.getTable().addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseReleased(MouseEvent me) {
-                    int r = table.getTable().rowAtPoint (me.getPoint ());
-                    if (r >= 0 && r < table.getTable().getRowCount()) {
-                        table.getTable().setRowSelectionInterval (r, r);
-                    } else  {
-                        table.getTable().clearSelection ();
-                    }
-    
-                    int rowIndex = table.getTable().getSelectedRow ();
-                    if (rowIndex <0)
-                        return;
-                    if (me.isPopupTrigger () && me.getComponent () instanceof JTable) {
-                        JPopupMenu popupXoa = createPopUpXoa (rowIndex, table);
-                        popupXoa.show (me.getComponent (), me.getX (), me.getY ());
-                    }
+    // Hiển thị menu xóa
+    public void ShowMenuOnlyXoa(GUIMyTable table){
+        table.getTable().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                int r = table.getTable().rowAtPoint (me.getPoint ());
+                if (r >= 0 && r < table.getTable().getRowCount()) {
+                    table.getTable().setRowSelectionInterval (r, r);
+                } else  {
+                    table.getTable().clearSelection ();
                 }
-            });
-        }
-    
-        // Khởi tạo popup menu Xoa
-        public JPopupMenu createPopUpXoa (int rowIndex, GUIMyTable Table) {
-    
-            menuXoa = new JMenuItem("Xóa");
-            menuXoa.setIcon(new ImageIcon("src/Images/Icon/xoa-16.png"));
-    
-            popupXoa = new JPopupMenu();
-            popupXoa.add(menuXoa);
-    
-            menuXoa.addMouseListener(new MouseAdapter(){
-                @Override
-                public void mousePressed(MouseEvent evt){
-                    Xoa_click(evt);
+
+                int rowIndex = table.getTable().getSelectedRow ();
+                if (rowIndex <0)
+                    return;
+                if (me.isPopupTrigger () && me.getComponent () instanceof JTable) {
+                    JPopupMenu popupXoa = createPopUpXoa (rowIndex, table);
+                    popupXoa.show (me.getComponent (), me.getX (), me.getY ());
                 }
-            });
-    
-            return popupXoa;
-        }
+            }
+        });
+    }
+
+    // Khởi tạo popup menu Xoa
+    public JPopupMenu createPopUpXoa (int rowIndex, GUIMyTable Table) {
+
+        menuXoa = new JMenuItem("Xóa");
+        menuXoa.setIcon(new ImageIcon("src/Images/Icon/xoa-16.png"));
+
+        popupXoa = new JPopupMenu();
+        popupXoa.add(menuXoa);
+
+        menuXoa.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent evt){
+                Xoa_click(evt);
+            }
+        });
+
+        return popupXoa;
+    }
 }
 
 

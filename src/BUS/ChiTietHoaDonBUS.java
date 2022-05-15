@@ -47,7 +47,7 @@ public class ChiTietHoaDonBUS {
 //        CTHD.xoa(ctHD); // update trạng thái lên database
 //        cthd.set(index, ctHD); // sửa lại thông tin trong list
 //    }
-     public void trusoluong(ChiTietHoaDonDTO ctHD){
+    public void trusoluong(ChiTietHoaDonDTO ctHD){
          MonAnBUS bus=new MonAnBUS();
          for(MonAnDTO DTO:MonAnBUS.dsMonAn)
          {

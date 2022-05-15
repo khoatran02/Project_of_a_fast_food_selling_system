@@ -9,15 +9,15 @@ import javax.swing.JOptionPane;
 
 public class MonAnDAO {
 
-    ConnectDB connection = new ConnectDB();
+    static ConnectDB connection = new ConnectDB();
 
     public MonAnDAO() {
 
     }
 
-    public ArrayList docDB() throws SQLException, Exception { //cần ghi lại khi qua class khác
-        
-        ArrayList<MonAnDTO> dsma = new ArrayList<>();
+    public static ArrayList<MonAnDTO> docDB() throws SQLException, Exception { //cần ghi lại khi qua class khác
+
+    ArrayList<MonAnDTO> dsma = new ArrayList<>();
         try {
             String qry = "SELECT * FROM monan";
             ResultSet result = connection.excuteQuery(qry);
@@ -35,10 +35,11 @@ public class MonAnDAO {
                     dsma.add(monan);
                 }
             }
+            return dsma;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Không đọc được dữ liệu bảng món ăn");
         }
-        return dsma;
+        return null;
     }
 
     public void them(MonAnDTO monan) { //cần ghi lại khi qua class khác

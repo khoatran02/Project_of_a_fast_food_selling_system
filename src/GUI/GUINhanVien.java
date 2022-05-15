@@ -67,7 +67,7 @@ public class GUINhanVien extends GUIFormContent {
     private JComboBox cbGioiTinh_Them,cbGioiTinh_Sua;
     private String array_GioiTinh[]={"Nam","Nữ"};
     private JComboBox cbChucVu_Them,cbChucVu_Sua;
-    private String array_ChucVu[]={"Nhân viên","Quản lý","Giám đốc"};
+    private String array_ChucVu[]={"Nhân viên bán và nhập hàng","Nhân viên nhập hàng","Nhân viên bán hàng","Quản lý"};
 
     // Tạo Menu cho popup menu
     JMenuItem menuThem,menuSua, menuXoa;
@@ -379,7 +379,7 @@ public class GUINhanVien extends GUIFormContent {
         int index = NhanVienBUS.timViTri(maNhanVien);
         //Truyền dữ liệu và vị trí vào bus
         BUS.sua(DTO, index);
-//        }
+
     }
 
     @Override
@@ -675,18 +675,25 @@ public class GUINhanVien extends GUIFormContent {
     
     public String traVeMaQuyenTuChucVu(String chucVu)
     {
-        if(chucVu.equals("Giám đốc"))
-        {
-            return "PQ0";
-        }
+
         if(chucVu.equals("Quản lý"))
         {
-            return "PQ1";
+            return "PQ00";
         }
-        if(chucVu.equals("Nhân viên"))
+        if(chucVu.equals("Nhân viên bán hàng"))
         {
-            return "PQ4";
+            return "PQ01";
         }
+        if(chucVu.equals("Nhân viên nhập hàng"))
+        {
+            return "PQ02";
+        }
+
+        if (chucVu.equals("Nhân viên bán và nhập hàng")){
+            return "PQ03";
+        }
+
+
         return null;
     }
     

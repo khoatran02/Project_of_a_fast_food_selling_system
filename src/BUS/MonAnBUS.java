@@ -18,7 +18,18 @@ public class MonAnBUS {
             dsMonAn = new ArrayList<>();
         }
         dsMonAn = data.docDB(); // đọc dữ liệu từ database
+    }
 
+    public static ArrayList<MonAnDTO> ReturnListMonAn(){
+        try {
+            ArrayList<MonAnDTO> dsma = new ArrayList<MonAnDTO>();
+            MonAnDAO data = new MonAnDAO();
+            dsma = data.docDB();
+            return dsma;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void them(MonAnDTO monAn) //cần ghi lại khi qua class khác
@@ -35,6 +46,7 @@ public class MonAnBUS {
         data.sua(monAn);
         if(dsMonAn!=null)
             dsMonAn.set(i, monAn);
+        
     }
 
     public void xoa(String ID, int index) //cần ghi lại khi qua class khác
@@ -47,7 +59,7 @@ public class MonAnBUS {
             dsMonAn.set(index, DTO);
     }
     //tìm vị trí của thằng có chứa mã mà mình cần
-    public static int timViTri( String ID) 
+    public static int timViTri(String ID) 
     {
         for (int i = 0; i < dsMonAn.size(); i++) {
             if (dsMonAn.get(i).getIDMonAn().equals(ID)) {

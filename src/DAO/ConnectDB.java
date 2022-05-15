@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 public class ConnectDB {
     private  String hostName = "localhost";
-    private  String dbName = "banthucannhanhver11";
+    private  String dbName = "banthucannhanhver02";
     private  String userName = "root";
     private  String password = "";
     private Connection connect;

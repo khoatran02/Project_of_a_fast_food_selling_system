@@ -7,6 +7,7 @@ package GUI;
 
 import BUS.MonAnBUS;
 import BUS.Tool;
+import DAO.MonAnDAO;
 import DTO.MonAnDTO;
 import Excel.DocExcel;
 import Excel.XuatExcel;
@@ -39,7 +40,7 @@ public class GUIMonAn extends GUIFormContent {
     //Nút lấy tên ảnh
     private JButton btnFileAnh;
     //Tạo mảng tiêu đề
-    public static String array_MonAn[] = {"Mã", "Tên món", "Đơn vị tính", "Giá", "Loại", "Số lượng"};
+    public static String array_MonAn[] = {"Mã", "Tên món", "Đơn vị tính", "Giá", "Hình ảnh", "Loại", "Số lượng"};
     //Tạo JTable , GUIMyTable kế thừa từ JTable và được chỉnh sửa
     private GUIMyTable table_MonAn;
     //Panel chứa phần show thông tin món ăn
@@ -90,6 +91,9 @@ public class GUIMonAn extends GUIFormContent {
         docDB();
         //Set kích thước và vị trí
         table_MonAn.pane.setPreferredSize(new Dimension(GUImenu.width_content * 90 / 100, 300));
+        table_MonAn.tb.getColumnModel().getColumn(4).setMinWidth(0); // Ẩn cột hình ảnh
+        table_MonAn.tb.getColumnModel().getColumn(4).setMaxWidth(0);
+        table_MonAn.tb.getColumnModel().getColumn(4).setWidth(0);
         table_MonAn.setBounds(0, 0, GUImenu.width_content, 300);
         panel.add(table_MonAn);
 
@@ -637,10 +641,22 @@ public class GUIMonAn extends GUIFormContent {
                     cbLoai_Sua.getSelectedItem().toString(),
                     Integer.parseInt(txt_MonAn_Sua[6].getText()));
             //Tìm vị trí của row cần sửa
-            int index = MonAnBUS.timViTri(maMonAn);
+            int index = MonAnBUS.timViTri(DTO.getIDMonAn());
             //Truyền dữ liệu và vị trí vào bus
             BUS.sua(DTO, index);
-//    }
+
+        // MonAnBUS bus=new MonAnBUS();
+        //  for(MonAnDTO DTO:MonAnBUS.dsMonAn)
+        //  {
+        //      if(ctHD.getIDMonAn().equals(DTO.getIDMonAn()))
+        //      {
+        //          int i=MonAnBUS.timViTri(DTO.getIDMonAn());
+        //          DTO.setSoLuong(DTO.getSoLuong()-ctHD.getSoLuong());
+        //          MonAnBUS.dsMonAn.set(i, DTO);
+        //          bus.sua(DTO, i);
+        //          return;
+        //      }
+        //  }
     }
 
     //Clear textfield
@@ -905,10 +921,22 @@ public class GUIMonAn extends GUIFormContent {
     private void LamMoi() {
         table_MonAn.clear();
         for (MonAnDTO DTO : MonAnBUS.dsMonAn) {
-            if (DTO.getTrangThai().equals("Hiện")) {
-                table_MonAn.addRow(DTO);
-            }
-        }
+             if (DTO.getTrangThai().equals("Hiện")) {
+                 table_MonAn.addRow(DTO);
+             }
+         }
+        // try {
+        //     ArrayList<MonAnDTO> dsma = new ArrayList<MonAnDTO>();
+        //     dsma = MonAnBUS.ReturnListMonAn();
+        //     for(MonAnDTO DTO : dsma){
+        //         table_MonAn.addRow(DTO);
+        //     }  
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
+      
+        
+
     }
 
     // Khởi tạo popup menu

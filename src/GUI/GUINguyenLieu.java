@@ -41,7 +41,7 @@ public class GUINguyenLieu extends GUIFormContent {
     //Nút lấy tên ảnh
     private JButton btnFileAnh;
     //Tạo mảng tiêu đề 
-    private static String array_NguyenLieu[] = {"Mã", "Tên", "Đơn giá", "Loại", "Đơn vị tính", "Số lượng"};
+    private static String array_NguyenLieu[] = {"Mã", "Tên", "Đơn giá", "Hình ảnh", "Loại", "Đơn vị tính", "Số lượng"};
     //Tạo bảng nguyên liệu
     public GUIMyTable table_NguyenLieu;
     //Tạo Dialog để thêm nguyên liệu
@@ -87,6 +87,9 @@ public class GUINguyenLieu extends GUIFormContent {
         docDB();
         //Set kích thước và vị trí
         table_NguyenLieu.pane.setPreferredSize(new Dimension(GUImenu.width_content * 90 / 100, 300));
+        table_NguyenLieu.tb.getColumnModel().getColumn(3).setMinWidth(0); // Ẩn cột hình ảnh
+        table_NguyenLieu.tb.getColumnModel().getColumn(3).setMaxWidth(0);
+        table_NguyenLieu.tb.getColumnModel().getColumn(3).setWidth(0);
         table_NguyenLieu.setBounds(0, 0, GUImenu.width_content, 300);
         panel.add(table_NguyenLieu);
         //Tạo phần show thông tin

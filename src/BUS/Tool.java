@@ -84,7 +84,7 @@ public static boolean isGmail(String gmail)
     {
         try
         {
-            if(Integer.parseInt(donGia) > 1000000 || Integer.parseInt(donGia) < 10000)
+            if(Integer.parseInt(donGia) > 1000000 || Integer.parseInt(donGia) < 0)
             {
                 return false;
             }
@@ -788,13 +788,17 @@ public static boolean isGmail(String gmail)
             String maSo = ma.substring(2);//lấy 12
             String maChu = ma.substring(0, 2); //lấy HD
             int maSo1= Integer.parseInt(maSo)+ 1;//tăng 12+1
-            String maMoi = maChu+ maSo1;
-            return maMoi;  
+            if (maSo1<10) {
+                String maMoi = maChu+"0"+ maSo1;
+                return maMoi;
+            } else {
+                String maMoi = maChu+ maSo1;
+                return maMoi;  
+            }
+           
         }
         return null;
     }
-
-
 
     //Hàm tăng mã đặt biệt khi có đến 3 kí tự 
     public static String tangMa3(String ma)
@@ -805,8 +809,13 @@ public static boolean isGmail(String gmail)
         String maChu = ma.substring(0, 3); //lấy NCC
         String maSo = ma.substring(3);//lấy 12
         int maSo1= Integer.parseInt(maSo) + 1;//tăng 12+1
-        String maMoi = maChu+ maSo1;
-        return maMoi;
+        if (maSo1<10) {
+            String maMoi = maChu+"0"+ maSo1;
+            return maMoi;
+        } else {
+            String maMoi = maChu+ maSo1;
+            return maMoi;  
+        }
         }
         return null;
     }
