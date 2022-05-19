@@ -55,6 +55,7 @@ public class GUIThongKe extends JPanel {
         tabs.addTab("Nhân viên", getIcon("nhanvien-30.png"), null);
         tabs.addTab("Khách hàng", getIcon("khachhang-30.png"), null);
         tabs.addTab("Nhà cung cấp", getIcon("nhacungcap-30.png"), null);
+        tabs.addTab("Thống kê biểu đồ", getIcon("chart-icon30.png"), null);
 
         tabs.addChangeListener((ce) -> {//chọn các tab jpanel
             int i = tabs.getSelectedIndex();
@@ -72,6 +73,8 @@ public class GUIThongKe extends JPanel {
                     case "Nhà cung cấp":
                         tabs.setComponentAt(i, new ThongKeNhaCungCap());
                         break;
+                    case "Thống kê biểu đồ":
+                        tabs.setComponentAt(i, new ThongKeBieuDo());
                 }
             }
         });
