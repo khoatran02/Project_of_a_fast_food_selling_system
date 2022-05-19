@@ -692,8 +692,7 @@ public class GUINhanVien extends GUIFormContent {
         if (chucVu.equals("Nhân viên bán và nhập hàng")){
             return "PQ03";
         }
-
-
+        
         return null;
     }
     

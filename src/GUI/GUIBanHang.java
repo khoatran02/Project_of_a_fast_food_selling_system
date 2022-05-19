@@ -11,6 +11,7 @@ import BUS.KhuyenMaiBUS;
 import BUS.MonAnBUS;
 import BUS.TaiKhoanBUS;
 import BUS.Tool;
+import DAO.MonAnDAO;
 import DTO.ChiTietHoaDonDTO;
 import DTO.HoaDonDTO;
 import DTO.KhuyenMaiDTO;
@@ -22,6 +23,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.*;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -553,7 +555,12 @@ public class GUIBanHang extends GUIFormBanNhap{
             NgayLap.setText(Tool.getNgayLap().toString()); // set ngày
             TongTien.setText("");
             ThanhToan.clear();
-            LamMoi();
+            try {
+                LamMoi();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            
         }
     }
     //Ràng buộc dữ liệu
@@ -601,8 +608,14 @@ public class GUIBanHang extends GUIFormBanNhap{
         }
     }
     //Hàm khi ấn nút làm mới
-    private void LamMoi() {
+    private void LamMoi() throws SQLException, Exception{
         table_MonAn.clear();
+        // ArrayList <MonAnDTO> dsmn = new ArrayList<MonAnDTO>();
+        // dsmn = MonAnDAO.docDB();
+        // for (int j = 0; j < dsmn.size(); j++) {
+        //     System.out.println(dsmn.get(j).getTrangThai());
+        // }
+        
         for (MonAnDTO DTO : MonAnBUS.dsMonAn) {
             if (DTO.getTrangThai().equals("Hiện")) {
                 table_MonAn.addRow(DTO);

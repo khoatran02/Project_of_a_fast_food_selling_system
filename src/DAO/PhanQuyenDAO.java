@@ -54,16 +54,16 @@ public class PhanQuyenDAO {
        }
     }    
     
-    public void sua(PhanQuyenDTO  pq){
+    public void sua(PhanQuyenDTO  pq) {
         try{
-             String qry="Update phanquyen Set ";
-                    qry = qry + "TenQuyen = ' "+pq.getTenQuyen()+"'";
-                    qry = qry + ",MoTaQuyen = '"+pq.getMoTaQuyen()+"'";
-                    qry = qry + " "+" WHERE IDPhanQuyen=' "+pq.getIDPhanQuyen()+"'";
-                    connection.getStatement();
-                    connection.ExecuteUpdate(qry);
-                    System.out.println(qry);
-                    connection.closeConnect();     
+            String qry="Update phanquyen Set ";
+            qry = qry + "TenQuyen='"+pq.getTenQuyen()+"'";
+            qry = qry + ",MoTaQuyen = '"+pq.getMoTaQuyen()+"'";
+            qry = qry + " "+" where IDPhanQuyen='"+pq.getIDPhanQuyen()+"'";
+            connection.getStatement();
+            connection.ExecuteUpdate(qry);
+            System.out.println(qry);
+            connection.closeConnect();     
         }catch (Exception ex){
             
         }

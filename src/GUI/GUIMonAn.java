@@ -21,6 +21,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -445,7 +446,12 @@ public class GUIMonAn extends GUIFormContent {
                 Tu_SoLuong.setText("");
                 Den_SoLuong.setText("");
                 //gọi hàm làm mới
-                LamMoi();
+                try {
+                    LamMoi();
+                } catch (Exception e) {
+                    //TODO: handle exception
+                }
+                
             }
         });
         TimKiem.add(LamMoi);
@@ -918,13 +924,15 @@ public class GUIMonAn extends GUIFormContent {
     }
 
     //Hàm khi ấn nút làm mới
-    private void LamMoi() {
+    private void LamMoi() throws SQLException, Exception {
         table_MonAn.clear();
         for (MonAnDTO DTO : MonAnBUS.dsMonAn) {
              if (DTO.getTrangThai().equals("Hiện")) {
                  table_MonAn.addRow(DTO);
              }
          }
+
+
         // try {
         //     ArrayList<MonAnDTO> dsma = new ArrayList<MonAnDTO>();
         //     dsma = MonAnBUS.ReturnListMonAn();
@@ -935,7 +943,12 @@ public class GUIMonAn extends GUIFormContent {
         //     e.printStackTrace();
         // }
       
-        
+        table_MonAn.clear();
+        ArrayList <MonAnDTO> dsmn = new ArrayList<MonAnDTO>();
+        dsmn = MonAnDAO.docDB();
+        for (int j = 0; j < dsmn.size(); j++) {
+            System.out.println(dsmn.get(j).getTrangThai());
+        }
 
     }
 

@@ -1,2 +1,0 @@
-Excel.MyTable
-Excel.ZebraJTable

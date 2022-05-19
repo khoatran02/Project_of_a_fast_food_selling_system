@@ -37,10 +37,6 @@ import javax.swing.JOptionPane;
 import static javax.swing.UIManager.getIcon;
 
 
-/**
- *
- * @author nguye
- */
 public class GUIThongKe extends JPanel {
 
     public static final int width = 1300, height = 740;

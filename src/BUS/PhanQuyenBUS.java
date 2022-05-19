@@ -35,7 +35,7 @@ public class PhanQuyenBUS {
         dspq.add(PQDTO);//cập nhật arraylist
         
     }
-    public void sua(PhanQuyenDTO PQDTO,int i)
+    public void sua(PhanQuyenDTO PQDTO,int i) 
     {
         PhanQuyenDAO pq = new PhanQuyenDAO();
         pq.sua(PQDTO);//ghi vào database

@@ -129,7 +129,7 @@ public class GUImenu extends JFrame{
         content.setPreferredSize(new Dimension(width_content,0));
         add(content,BorderLayout.CENTER);
 
-        addEvent();
+    //    addEvent();
         setSize(width,height);
         this.setLocationRelativeTo(null);
         this.setVisible(true);

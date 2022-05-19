@@ -32,10 +32,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.plaf.FontUIResource;
 
-/**
- *
- * @author Nguyen
- */
+
 public class GUIKhachHang extends GUIFormContent {
 
     public static String array_KhachHang[] = {"Mã khách hàng", "Họ", "Tên", "Gmail", "Giới tính", "SĐT", "Tổng chi tiêu"};
