@@ -933,4 +933,81 @@ class ThongKeBieuDo extends JPanel{
     //         }
     //     });
     // }
-}
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// private void soLuongNguyenLieuCungCap() {
+//     tb.clear();
+//     tb.setHeaders(new String[]{"Mã nhà cung cấp", "Tên nhà cung cấp", "Mã hóa đơn nhập", "Ngày lập", "Mã nguyên liệu", "Tên nguyên liệu", "Số lượng"});
+
+//     MyCheckDate mcd = new MyCheckDate(txKhoangNgayTu, txKhoangNgayDen);
+
+//     int tongTatCa = 0;
+//     for(NhaCungCapDTO ncc: qlnccBUS.getNhaCungCapDTO()) {           
+//         int tongSoLuong = 0;
+//         tb.addRow(new String[]{ncc.getIDNhaCungCap(), ncc.getTenNhaCungCap(), "", "", "", "", ""});
+//         for (HoaDonNhapDTO hdn : qlhdnBUS.search("Tất cả", "", mcd.getNgayTu(), mcd.getNgayDen(), -1, -1)) {
+//             if (hdn.getIDNhaCungCap().equals(ncc.getIDNhaCungCap())) {
+//                 tb.addRow(new String[]{"", "", hdn.getIDHoaDonNhap(), String.valueOf(hdn.getNgayNhap()), "", "", ""});
+
+//                 for (ChiTietHoaDonNhapDTO cthdn : qlcthdnBUS.search("Mã hóa đơn nhập", hdn.getIDHoaDonNhap())) {
+//                     tongSoLuong += cthdn.getSoLuong();
+//                     tb.addRow(new String[]{"", "", "", "",
+//                         cthdn.getIDNguyenLieu(),
+//                         qlnlBUS.getNguyenLieuDTO(cthdn.getIDNguyenLieu()).getTenNguyenLieu(),
+//                         String.valueOf(cthdn.getSoLuong()+ " phần ")
+//                     });
+//                 }
+//             }
+//         }
+//         tb.addRow(new String[]{"", "", "", mcd.getKhoangTG(), "", "", String.valueOf(tongSoLuong)+ " phần "});
+//         tongTatCa+=tongSoLuong;
+//     }
+//     tb.addRow(new String[]{"", "", "", "", "", "", ""});
+//     tb.addRow(new String[]{"", "", "", "", "", "Tổng tất cả:", String.valueOf(tongTatCa)+ " phần "});
+// }
+
+// private void addDocumentListener(JTextField txField) {
+//     txField.getDocument().addDocumentListener(new DocumentListener() {
+//         @Override
+//         public void changedUpdate(DocumentEvent e) {
+//             cbSearchOnChange();
+//         }
+
+//         @Override
+//         public void removeUpdate(DocumentEvent e) {
+//             cbSearchOnChange();
+//         }
+
+//         @Override
+//         public void insertUpdate(DocumentEvent e) {
+//             cbSearchOnChange();
+//         }
+//     });
+// }
