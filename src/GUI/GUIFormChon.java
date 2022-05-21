@@ -125,7 +125,7 @@ public class GUIFormChon extends JDialog{
         this.setLocation(x - xMouse, y - yMouse);
     }
 
-
+    // Set Event di chuyển cho form
     public void addEvent(){
         this.addMouseMotionListener(new MouseMotionListener() {
             @Override

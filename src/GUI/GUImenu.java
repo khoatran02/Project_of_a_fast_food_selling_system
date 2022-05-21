@@ -81,7 +81,7 @@ public class GUImenu extends JFrame{
     //https://stackoverflow.com/questions/3680221/how-can-i-get-screen-resolution-in-java
     //Lệnh này để lấy kích thước màn hình
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    //Tạo biến width với 90% độ dài của độ phân giải màn hình
+    //Tạo biến width với 98% độ dài của độ phân giải màn hình
     public static int width = (int)(screenSize.getWidth()*98/100);
     //Tạo biến height với 90% độ rộng của độ phân giải màn hình
     public static int height = (int)(screenSize.getHeight()*90/100);
@@ -163,7 +163,8 @@ public class GUImenu extends JFrame{
 //        JPanel menu=new JPanel(new GridLayout(14, 1));
         JPanel menu=new JPanel(null);
         
-        JLabel logo=new JLabel(Tool.showIcon(width_menu, 200, "src/Images/Icon/Logo-Design-removebg-preview.png"));
+      //  JLabel logo=new JLabel(Tool.showIcon(width_menu, 200, "src/Images/Icon/Logo-Design-removebg-preview.png"));
+      JLabel logo=new JLabel(Tool.showIcon(width_menu-35, 150, "src/Images/Icon/LogoCarFood.png"));
         logo.setBounds(0, 0, width_menu, 200);
         //Sự kiện khi ấn vào logo thì hiện tên 
         logo.addMouseListener(new MouseAdapter(){

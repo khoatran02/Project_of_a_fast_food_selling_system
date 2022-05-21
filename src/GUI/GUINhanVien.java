@@ -48,7 +48,7 @@ import javax.swing.plaf.FontUIResource;
 
 public class GUINhanVien extends GUIFormContent {
 
-    public static String array_NhanVien[] = {"Mã nhân viên", "Họ", "Tên", "Gmail", "Giới tính", "SĐT", "Chức vụ"};
+    public static String array_NhanVien[] = {"Mã nhân viên", "Họ", "Tên", "Gmail", "Giới tính", "SĐT", "Quyền hạn"};
     public GUIMyTable table_NhanVien;
     private static JDialog Them_NhanVien;
     private static JDialog Sua;
