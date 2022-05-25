@@ -283,7 +283,7 @@ public class GUIPhanQuyen extends GUIFormContent{
         });
         Sua.add(Luu);
 
-        JButton Thoat = new JButton("Thoát");  
+        JButton Thoat = new JButton("Thoát");
         Thoat.setBackground(Color.decode("#90CAF9"));
         Thoat.setBounds(250, y, 100, 50);
         Thoat.addMouseListener(new MouseAdapter() {
@@ -414,6 +414,7 @@ public class GUIPhanQuyen extends GUIFormContent{
                 
             }
         }
+
     }
     
     //Hàm khi ấn nút làm mới

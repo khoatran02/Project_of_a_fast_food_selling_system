@@ -19,6 +19,9 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
+import BUS.CongThucBUS;
+import BUS.MonAnBUS;
 /**
  * MyTable có nhiệm vụ add có row của các table từ database vào table trong GUI
  *
@@ -207,13 +210,30 @@ public class GUIMyTable extends JPanel {
                     data.getNoiDungGiamGia()                    
                 });
     }
-    public void addRow(CongThucDTO data) {
+    public void addRow(CongThucDTO data, MonAnDTO monAnDTO) {
         addRow(new String[]{
                     data.getIDCongThuc(),
                     data.getIDMonAn(),
+                    monAnDTO.getTenMonAn(),
                     data.getMoTaCongThuc()
-                });
+                });  
     }
+
+    public ArrayList<MonAnDTO> TenMonAn() {
+        ArrayList<MonAnDTO> dsma = new ArrayList<MonAnDTO>();
+        for(CongThucDTO DTO : CongThucBUS.CT){
+            if (DTO.getTrangThai().equals("Hiện")) {
+                for(MonAnDTO monAnDTO : MonAnBUS.dsMonAn){
+                    if (DTO.getIDMonAn().equals(monAnDTO.getIDMonAn()) ) {
+
+                        dsma.add(monAnDTO);
+                    }
+                }
+            }      
+        }
+        return dsma;
+    }
+    
     public void addRow(ChiTietHoaDonDTO data) {
         addRow(new String[]{
                     data.getIDMonAn(),

@@ -9,6 +9,7 @@ import BUS.CongThucBUS;
 import BUS.MonAnBUS;
 import BUS.Tool;
 import DTO.CongThucDTO;
+import DTO.MonAnDTO;
 import Excel.DocExcel;
 import Excel.XuatExcel;
 import java.awt.Color;
@@ -43,13 +44,10 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.plaf.FontUIResource;
 
-/**
- *
- * @author Nguyen
- */
+
 public class GUICongThuc extends GUIFormContent{
     //Tạo mảng tiêu đề
-    public static String array_CongThuc[]={"Mã công thức","Mã món ăn","Mô tả công thức"};
+    public static String array_CongThuc[]={"Mã công thức","Mã món ăn","Tên món ăn","Mô tả công thức"};
     //Tạo JTable , GUIMyTable kế thừa từ JTable và được chỉnh sửa
     public GUIMyTable table_CongThuc;
     //Tạo Dialog để thêm công thức
@@ -182,7 +180,7 @@ public class GUICongThuc extends GUIFormContent{
                                                   "Hiện");
                     
                     BUS.them(DTO); //thêm công thức bên BUS đã có thêm vào database
-                    table_CongThuc.addRow(DTO);                    
+                    table_CongThuc.addRow(DTO,null);                    
                     //clear textfield trong Them
                     for(int i=0;i<array_CongThuc.length;i++)
                     {
@@ -427,21 +425,32 @@ public class GUICongThuc extends GUIFormContent{
             java.util.logging.Logger.getLogger(GUICongThuc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         }
-        
-        for (CongThucDTO DTO : CongThucBUS.CT) {
+
+        for(CongThucDTO DTO : CongThucBUS.CT){
             if (DTO.getTrangThai().equals("Hiện")) {
-                table_CongThuc.addRow(DTO);
-                    
-            }
+                for(MonAnDTO monAnDTO : MonAnBUS.dsMonAn){
+                    if (DTO.getIDMonAn().equals(monAnDTO.getIDMonAn()) ) {
+                        table_CongThuc.addRow(DTO,monAnDTO);
+                    }
+                }
+            }      
         }
+
+       
     }
+
+
     //Hàm khi ấn nút làm mới
     private void LamMoi(){
         table_CongThuc.clear();
-        for (CongThucDTO DTO : CongThucBUS.CT) {
+        for(CongThucDTO DTO : CongThucBUS.CT){
             if (DTO.getTrangThai().equals("Hiện")) {
-                table_CongThuc.addRow(DTO);
-            }
+                for(MonAnDTO monAnDTO : MonAnBUS.dsMonAn){
+                    if (DTO.getIDMonAn().equals(monAnDTO.getIDMonAn()) ) {
+                        table_CongThuc.addRow(DTO,monAnDTO);
+                    }
+                }
+            }      
         }
     }
     @Override
@@ -538,11 +547,14 @@ public class GUICongThuc extends GUIFormContent{
     public void txtSearchOnChange() {
         table_CongThuc.clear();
         ArrayList<CongThucDTO> arraylist=Tool.searchCT(search.getText(),cbSearch.getSelectedItem().toString() );
-        for (CongThucDTO DTO : arraylist) {
+        for(CongThucDTO DTO : CongThucBUS.CT){
             if (DTO.getTrangThai().equals("Hiện")) {
-                table_CongThuc.addRow(DTO);
-                    
-            }
+                for(MonAnDTO monAnDTO : MonAnBUS.dsMonAn){
+                    if (DTO.getIDMonAn().equals(monAnDTO.getIDMonAn()) ) {
+                        table_CongThuc.addRow(DTO,monAnDTO);
+                    }
+                }
+            }      
         }
     }
     
@@ -577,10 +589,10 @@ public class GUICongThuc extends GUIFormContent{
                 || moTaCongThuc.equals("")) {
             JOptionPane.showMessageDialog(null, "Vui lòng điền đầy đủ thông tin");
         }
-//        else if(!MonAnBUS.timMaMonAn(MaMonAn)) {
-//            JOptionPane.showMessageDialog(null, "Mã món ăn không tồn tại");
-//            txt_CongThuc_Them[1].requestFocus();
-//        }
+        else if(!MonAnBUS.timMaMonAn(MaMonAn)) {
+            JOptionPane.showMessageDialog(null, "Mã món ăn không tồn tại");
+            txt_CongThuc_Them[1].requestFocus();
+        }
         else if (!Tool.isCongThuc(Tool.removeAccent(moTaCongThuc))) {
             JOptionPane.showMessageDialog(null, "Mô tả công thức không được chứa ký tự đặc biệt");
             txt_CongThuc_Sua[2].requestFocus();
@@ -670,148 +682,7 @@ public void ShowMenu(GUIMyTable table){
 
 }
 
-// public void ShowMenu(GUIMyTable table){
-//     table.getTable().addMouseListener(new MouseAdapter() {
-//         @Override
-//         public void mouseReleased(MouseEvent me) {
-//             int r = table.getTable().rowAtPoint (me.getPoint ());
-//             if (r >= 0 && r < table.getTable().getRowCount()) {
-//                 table.getTable().setRowSelectionInterval (r, r);
-//             } else  {
-//                 table.getTable().clearSelection ();
-//             }
 
-//             int rowIndex = table.getTable().getSelectedRow ();
-//             if (rowIndex <0)
-//                 return;
-//             if (me.isPopupTrigger () && me.getComponent () instanceof JTable) {
-//                 JPopupMenu popup = createPopUp (rowIndex, table);
-//                 popup.show (me.getComponent (), me.getX (), me.getY ());
-//             }
-//         }
-//     });
-// }
-
-// }
-// public void ShowMenu(GUIMyTable table){
-    //     table.getTable().addMouseListener(new MouseAdapter() {
-    //         @Override
-    //         public void mouseReleased(MouseEvent me) {
-    //             int r = table.getTable().rowAtPoint (me.getPoint ());
-    //             if (r >= 0 && r < table.getTable().getRowCount()) {
-    //                 table.getTable().setRowSelectionInterval (r, r);
-    //             } else  {
-    //                 table.getTable().clearSelection ();
-    //             }
-    
-    //             int rowIndex = table.getTable().getSelectedRow ();
-    //             if (rowIndex <0)
-    //                 return;
-    //             if (me.isPopupTrigger () && me.getComponent () instanceof JTable) {
-    //                 JPopupMenu popup = createPopUp (rowIndex, table);
-    //                 popup.show (me.getComponent (), me.getX (), me.getY ());
-    //             }
-    //         }
-    //     });
-    // }
-    
-    // }
-    // public void ShowMenu(GUIMyTable table){
-        //     table.getTable().addMouseListener(new MouseAdapter() {
-        //         @Override
-        //         public void mouseReleased(MouseEvent me) {
-        //             int r = table.getTable().rowAtPoint (me.getPoint ());
-        //             if (r >= 0 && r < table.getTable().getRowCount()) {
-        //                 table.getTable().setRowSelectionInterval (r, r);
-        //             } else  {
-        //                 table.getTable().clearSelection ();
-        //             }
-        
-        //             int rowIndex = table.getTable().getSelectedRow ();
-        //             if (rowIndex <0)
-        //                 return;
-        //             if (me.isPopupTrigger () && me.getComponent () instanceof JTable) {
-        //                 JPopupMenu popup = createPopUp (rowIndex, table);
-        //                 popup.show (me.getComponent (), me.getX (), me.getY ());
-        //             }
-        //         }
-        //     });
-        // }
-        
-        // }
-        
-    // public void ShowMenu(GUIMyTable table){
-        //     table.getTable().addMouseListener(new MouseAdapter() {
-        //         @Override
-        //         public void mouseReleased(MouseEvent me) {
-        //             int r = table.getTable().rowAtPoint (me.getPoint ());
-        //             if (r >= 0 && r < table.getTable().getRowCount()) {
-        //                 table.getTable().setRowSelectionInterval (r, r);
-        //             } else  {
-        //                 table.getTable().clearSelection ();
-        //             }
-        
-        //             int rowIndex = table.getTable().getSelectedRow ();
-        //             if (rowIndex <0)
-        //                 return;
-        //             if (me.isPopupTrigger () && me.getComponent () instanceof JTable) {
-        //                 JPopupMenu popup = createPopUp (rowIndex, table);
-        //                 popup.show (me.getComponent (), me.getX (), me.getY ());
-        //             }
-        //         }
-        //     });
-        // }
-        
-        // }
-        
-            // public void ShowMenu(GUIMyTable table){
-        //     table.getTable().addMouseListener(new MouseAdapter() {
-        //         @Override
-        //         public void mouseReleased(MouseEvent me) {
-        //             int r = table.getTable().rowAtPoint (me.getPoint ());
-        //             if (r >= 0 && r < table.getTable().getRowCount()) {
-        //                 table.getTable().setRowSelectionInterval (r, r);
-        //             } else  {
-        //                 table.getTable().clearSelection ();
-        //             }
-        
-        //             int rowIndex = table.getTable().getSelectedRow ();
-        //             if (rowIndex <0)
-        //                 return;
-        //             if (me.isPopupTrigger () && me.getComponent () instanceof JTable) {
-        //                 JPopupMenu popup = createPopUp (rowIndex, table);
-        //                 popup.show (me.getComponent (), me.getX (), me.getY ());
-        //             }
-        //         }
-        //     });
-        // }
-        
-        // }
-        
-            // public void ShowMenu(GUIMyTable table){
-        //     table.getTable().addMouseListener(new MouseAdapter() {
-        //         @Override
-        //         public void mouseReleased(MouseEvent me) {
-        //             int r = table.getTable().rowAtPoint (me.getPoint ());
-        //             if (r >= 0 && r < table.getTable().getRowCount()) {
-        //                 table.getTable().setRowSelectionInterval (r, r);
-        //             } else  {
-        //                 table.getTable().clearSelection ();
-        //             }
-        
-        //             int rowIndex = table.getTable().getSelectedRow ();
-        //             if (rowIndex <0)
-        //                 return;
-        //             if (me.isPopupTrigger () && me.getComponent () instanceof JTable) {
-        //                 JPopupMenu popup = createPopUp (rowIndex, table);
-        //                 popup.show (me.getComponent (), me.getX (), me.getY ());
-        //             }
-        //         }
-        //     });
-        // }
-        
-        // }
-        
 
 
 
