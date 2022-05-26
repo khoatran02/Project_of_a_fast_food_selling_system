@@ -1,4 +1,4 @@
-﻿/*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -48,7 +48,7 @@ import javax.swing.event.MouseInputAdapter;
 import javax.swing.plaf.FontUIResource;
 
 public class GUIPhanQuyen extends GUIFormContent{
-    public static String array_PhanQuyen[]={"Mã quyền","Tên quyền"};
+    public static String array_PhanQuyen[]={"Mã quyền","Tên quyền","Mô tả quyền"};
     public String arrString_Quyen[]={"Quản lý bán hàng","Quản lý nhập hàng",
         "Quản lý món ăn","Quản lý nguyên liệu",
         "Quản lý công thức","Quản lý hóa đơn",
@@ -685,8 +685,6 @@ public class GUIPhanQuyen extends GUIFormContent{
 
 }
 
-
-//
 
 
 
