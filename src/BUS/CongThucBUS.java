@@ -84,10 +84,10 @@ public class CongThucBUS {
         if(CT.size() > 0)
         {
             String ma;
-         ma = CT.get(CT.size()-1).getIDMonAn();
-         return ma;
+            ma = CT.get(CT.size()-1).getIDMonAn();
+            return ma;
         }
-         return null;
+        return null;
     }
     public ArrayList<CongThucDTO> getCongThucDTO() {
         return CT;
@@ -97,6 +97,22 @@ public class CongThucBUS {
             if (ctDTO.getIDCongThuc().equals(idcongthuc)) {
                 return ctDTO;
             }
+        }
+        return null;
+    }
+
+
+    public static String getMaCongThucCuoi()
+    {
+        if(CT == null)
+        {
+            CT = new ArrayList<>();
+        }
+        if(CT.size() > 0)
+        {
+            String ma;
+        ma = CT.get(CT.size()-1).getIDCongThuc();
+        return ma;
         }
         return null;
     }

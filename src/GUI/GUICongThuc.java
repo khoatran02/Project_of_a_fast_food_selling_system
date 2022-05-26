@@ -229,7 +229,7 @@ public class GUICongThuc extends GUIFormContent{
         });
         
         
-        String maNguyenLieu= Tool.tangMa(CongThucBUS.getMaMonAnCuoi());
+        String maNguyenLieu= Tool.tangMa(CongThucBUS.getMaCongThucCuoi());
         txt_CongThuc_Them[0].setText(maNguyenLieu);
         txt_CongThuc_Them[0].setEditable(false);
         Them_CongThuc.setVisible(true);
