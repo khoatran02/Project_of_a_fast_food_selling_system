@@ -5,10 +5,7 @@
  */
 package DTO;
 
-/**
- *
- * @author Nguyen
- */
+
 public class CongThucDTO {
     private String IDCongThuc,IDMonAn,MoTaCongThuc,TrangThai;
 

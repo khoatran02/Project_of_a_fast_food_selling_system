@@ -9,10 +9,7 @@ import DAO.PhanQuyenDAO;
 import DTO.PhanQuyenDTO;
 import java.util.ArrayList;
 
-/**
- *
- * @author HP
- */
+
 public class PhanQuyenBUS {
    public static ArrayList<PhanQuyenDTO> dspq;
    public PhanQuyenBUS()

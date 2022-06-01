@@ -11,10 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 
-/**
- *
- * @author HP
- */
+
 public class HoaDonBUS {
 
     public static ArrayList<HoaDonDTO> HD;

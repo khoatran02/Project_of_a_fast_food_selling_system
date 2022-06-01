@@ -11,10 +11,7 @@ import DTO.NhanVienDTO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author HP
- */
+
 public class NhanVienBUS {
    public static ArrayList<NhanVienDTO> dsnv;
    public NhanVienBUS()

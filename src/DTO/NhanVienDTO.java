@@ -5,10 +5,7 @@
  */
 package DTO;
 
-/**
- *
- * @author Nguyen
- */
+
 public class NhanVienDTO {
     private String IDNhanVien,HoNhanVien,TenNhanVien,Gmail,GioiTinh,SoDienThoai,ChucVu,TrangThai;
     public NhanVienDTO(String IDNhanVien,String HoNhanVien,String TenNhanVien,String Gmail,String GioiTinh,String SoDienThoai,String ChucVu){

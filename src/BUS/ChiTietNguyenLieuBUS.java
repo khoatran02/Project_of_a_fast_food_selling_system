@@ -9,10 +9,7 @@ import DAO.ChiTietNguyenLieuDAO;
 import DTO.ChiTietNguyenLieuDTO;
 import java.util.ArrayList;
 
-/**
- *
- * @author HP
- */
+
 public class ChiTietNguyenLieuBUS {
    public static ArrayList<ChiTietNguyenLieuDTO> dsctnl;
    public ChiTietNguyenLieuBUS()

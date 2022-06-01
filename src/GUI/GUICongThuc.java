@@ -176,7 +176,7 @@ public class GUICongThuc extends GUIFormContent{
                     {
                     CongThucDTO DTO = new CongThucDTO(txt_CongThuc_Them[0].getText(),
                                                   txt_CongThuc_Them[1].getText(),
-                                                  txt_CongThuc_Them[2].getText(),
+                                                  txt_CongThuc_Them[3].getText(),
                                                   "Hiện");
                     
                     BUS.them(DTO); //thêm công thức bên BUS đã có thêm vào database
@@ -232,6 +232,8 @@ public class GUICongThuc extends GUIFormContent{
         String maNguyenLieu= Tool.tangMa(CongThucBUS.getMaCongThucCuoi());
         txt_CongThuc_Them[0].setText(maNguyenLieu);
         txt_CongThuc_Them[0].setEditable(false);
+        label_CongThuc[2].show(false);
+        txt_CongThuc_Them[2].show(false);
         Them_CongThuc.setVisible(true);
 
     }
@@ -303,7 +305,7 @@ public class GUICongThuc extends GUIFormContent{
                 if(a == JOptionPane.YES_OPTION){
                     if (checkTextSua(
                                 txt_CongThuc_Sua[1].getText(),
-                                txt_CongThuc_Sua[2].getText()
+                                txt_CongThuc_Sua[3].getText()
                                 )) {
                             //Chạy hàm để lưu lại việc sửa dữ liệu    
                             buttonLuu_Sua();
@@ -319,6 +321,7 @@ public class GUICongThuc extends GUIFormContent{
         Sua.add(Luu);
         
         txt_CongThuc_Sua[1].setEditable(false);
+        txt_CongThuc_Sua[2].setEditable(false);
 
         JButton Thoat = new JButton("Thoát");
         Thoat.setBackground(Color.decode("#90CAF9"));
@@ -346,6 +349,7 @@ public class GUICongThuc extends GUIFormContent{
         Sua.setVisible(true);
         
     }
+    
     //Hàm lưu dữ liệu khi sửa
     public void buttonLuu_Sua() {
         int row = table_CongThuc.tb.getSelectedRow();
@@ -367,7 +371,7 @@ public class GUICongThuc extends GUIFormContent{
             //Tạo đối tượng monAnDTO và truyền dữ liệu trực tiếp thông qua constructor
             CongThucDTO DTO = new CongThucDTO(txt_CongThuc_Sua[0].getText(),
                                                   txt_CongThuc_Sua[1].getText(),
-                                                  txt_CongThuc_Sua[2].getText());
+                                                  txt_CongThuc_Sua[3].getText());
             //Tìm vị trí của row cần sửa
             int index = CongThucBUS.timViTri(maCongThuc);
             //Truyền dữ liệu và vị trí vào bus
@@ -437,12 +441,13 @@ public class GUICongThuc extends GUIFormContent{
         }
 
        
-    }
-
+    }   
 
     //Hàm khi ấn nút làm mới
-    private void LamMoi(){
+    private void LamMoi() throws Exception{
         table_CongThuc.clear();
+        CongThucBUS congThucBUS = new CongThucBUS();
+        congThucBUS.docCT();
         for(CongThucDTO DTO : CongThucBUS.CT){
             if (DTO.getTrangThai().equals("Hiện")) {
                 for(MonAnDTO monAnDTO : MonAnBUS.dsMonAn){
@@ -491,7 +496,12 @@ public class GUICongThuc extends GUIFormContent{
             @Override
             public void mousePressed(MouseEvent evt){
                 search.setText("");
-                LamMoi();
+                try {
+                    LamMoi();
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
         TimKiem.add(LamMoi);                

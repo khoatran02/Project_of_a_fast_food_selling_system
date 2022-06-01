@@ -41,10 +41,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-/**
- *
- * @author Nguyen
- */
+
 //Class này kế thừa JDialog , dùng để hiện danh sách các thực thể khi cần mã của chúng nhưng người dùng không nhớ hoặc để hiện chi tiết với các mối quan hệ 1-n
 public class GUIFormChon extends JDialog{
     //Panel chứa tiêu đề và nút

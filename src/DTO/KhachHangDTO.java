@@ -5,10 +5,7 @@
  */
 package DTO;
 
-/**
- *
- * @author Nguyen
- */
+
 public class KhachHangDTO {
     private String IDKhachHang,HoKhachHang,TenKhachHang,Gmail,GioiTinh,SoDienThoai,TrangThai;
     private float TongChiTieu;

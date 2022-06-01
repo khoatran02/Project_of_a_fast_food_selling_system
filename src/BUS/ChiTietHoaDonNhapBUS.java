@@ -10,10 +10,7 @@ import DTO.ChiTietHoaDonNhapDTO;
 import DTO.NguyenLieuDTO;
 import java.util.ArrayList;
 
-/**
- *
- * @author HP
- */
+
 public class ChiTietHoaDonNhapBUS {
    public static ArrayList<ChiTietHoaDonNhapDTO> dscthdn;
    public ChiTietHoaDonNhapBUS()

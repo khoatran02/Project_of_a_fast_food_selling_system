@@ -11,10 +11,6 @@ import DTO.KhuyenMaiDTO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author HP
- */
 public class KhuyenMaiBUS {
    public static ArrayList<KhuyenMaiDTO> dskm;
    public KhuyenMaiBUS()

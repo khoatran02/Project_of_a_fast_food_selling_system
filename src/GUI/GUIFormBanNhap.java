@@ -8,10 +8,7 @@ package GUI;
 import java.awt.Color;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Nguyen
- */
+
 //Class này tạo bố cục sẵn cho form bán hàng và nhập hàng
 public class GUIFormBanNhap extends JPanel{
     //Tạo các panel

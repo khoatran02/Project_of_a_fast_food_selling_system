@@ -29,10 +29,7 @@ import javax.swing.SwingConstants;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Piger Streaming
- */
+
 public class LoginGUI extends javax.swing.JFrame {
     public static String taiKhoan;
     /**

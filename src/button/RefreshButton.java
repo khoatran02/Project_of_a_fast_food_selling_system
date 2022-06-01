@@ -8,10 +8,7 @@ package button;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-/**
- *
- * @author DELL
- */
+
 public class RefreshButton extends JButton {
 
     public RefreshButton() {

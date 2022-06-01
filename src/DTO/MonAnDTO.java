@@ -1,9 +1,5 @@
 package DTO;
-//main
-/**
- *
- * @author Nguyen
- */
+
 public class MonAnDTO {
     private String  IDMonAn,TenMonAn,DonViTinh,HinhAnh,Loai,TrangThai;
     private int DonGia;

@@ -8,25 +8,25 @@ package BUS;
 import DAO.KhachHangDAO;
 import java.util.ArrayList;
 import DTO.KhachHangDTO;
+import DTO.MonAnDTO;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author HP
- */
+
 public class KhachHangBUS {
    public static ArrayList<KhachHangDTO> dskh;
    public KhachHangBUS()
     {
         
     }
-    public  void  docDSKH() throws Exception 
+    public void docDSKH() throws Exception 
     {
         KhachHangDAO khdata=new KhachHangDAO();
         if(dskh==null) 
             dskh=new ArrayList<KhachHangDTO>();
+        dskh.clear();
         dskh =khdata.docDSKH();
     }
     public void  them(KhachHangDTO kh)

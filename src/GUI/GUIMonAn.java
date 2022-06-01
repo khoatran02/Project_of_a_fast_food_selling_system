@@ -32,10 +32,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.plaf.FontUIResource;
 
-/**
- *
- * @author Nguyen
- */
+
 //Kế thừa từ 1 mẫu bố cục là GUIFormContent
 public class GUIMonAn extends GUIFormContent {
     //Nút lấy tên ảnh

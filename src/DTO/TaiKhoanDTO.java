@@ -5,10 +5,7 @@
  */
 package DTO;
 
-/**
- *
- * @author Nguyen
- */
+
 public class TaiKhoanDTO {
     private String TaiKhoan,IDNhanVien,IDPhanQuyen,MatKhau,TrangThai;
 

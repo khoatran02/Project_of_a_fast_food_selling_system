@@ -32,10 +32,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.plaf.FontUIResource;
 
-/**
- *
- * @author Nguyen
- */
+
 public class GUINguyenLieu extends GUIFormContent {
 
     //Nút lấy tên ảnh

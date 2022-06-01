@@ -38,10 +38,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-/**
- *
- * @author Nguyen
- */
+
 public class GUIHoaDonNhap extends GUIFormContent {
     private static String array_HoaDonNhap[]={"Mã hóa đơn","Mã nhân viên","Mã nhà cung cấp","Ngày nhập","Tổng tiền"};   
     public GUIMyTable table_HoaDonNhap;

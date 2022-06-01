@@ -43,10 +43,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Nguyen
- */
+
 public class GUIHoaDon extends GUIFormContent {
     //Tạo mảng tiêu đề
     private static String array_HoaDon[]={"Mã hóa đơn","Mã nhân viên","Mã khách hàng","Mã khuyến mãi","Ngày lập","Tiền giảm giá","Tổng tiền"};   

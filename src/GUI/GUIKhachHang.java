@@ -6,8 +6,10 @@
 package GUI;
 
 import BUS.KhachHangBUS;
+import BUS.MonAnBUS;
 import BUS.Tool;
 import DTO.KhachHangDTO;
+import DTO.MonAnDTO;
 import Excel.DocExcel;
 import Excel.XuatExcel;
 import java.awt.Color;
@@ -497,7 +499,12 @@ JPanel TimKiem=new JPanel(null);
             @Override
             public void mousePressed(MouseEvent evt) {
                 Ten.setText("");
-                LamMoi();
+                try {
+                    LamMoi();
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
 
             }
         });
@@ -506,8 +513,10 @@ JPanel TimKiem=new JPanel(null);
         return TimKiem;
     }
 
-    private void LamMoi() {
+    private void LamMoi() throws Exception {
         table_KhachHang.clear();
+        KhachHangBUS khbus = new KhachHangBUS();
+        khbus.docDSKH();
         for (KhachHangDTO DTO : KhachHangBUS.dskh) {
             if (DTO.getTrangThai().equals("Hiện")) {
                 table_KhachHang.addRow(DTO);

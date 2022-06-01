@@ -12,10 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author HP
- */
+
 public class NhaCungCapBUS {
    public static ArrayList<NhaCungCapDTO> dsncc;
    public NhaCungCapBUS()

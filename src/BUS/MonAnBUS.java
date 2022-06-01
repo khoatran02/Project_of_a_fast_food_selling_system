@@ -2,6 +2,8 @@ package BUS;
 import DTO.*;
 import DAO.*;
 import java.util.ArrayList;
+
+
 // copy paste qua hết
 public class MonAnBUS {
 
@@ -17,6 +19,7 @@ public class MonAnBUS {
         if (dsMonAn == null) {
             dsMonAn = new ArrayList<>();
         }
+        dsMonAn.clear();
         dsMonAn = data.docDB(); // đọc dữ liệu từ database
     }
 
@@ -37,15 +40,15 @@ public class MonAnBUS {
         MonAnDAO data = new MonAnDAO();
         data.them(monAn);//ghi vào database
         if(dsMonAn!=null)
-            dsMonAn.add(monAn);//cập nhật arraylist
+            dsMonAn.add(monAn);//cập nhật arraylist ở BUS
     }
 
     public void sua(MonAnDTO monAn, int i) //cần ghi lại khi qua class khác
     {
         MonAnDAO data = new MonAnDAO();
-        data.sua(monAn);
+        data.sua(monAn);  //ghi vào database
         if(dsMonAn!=null)
-            dsMonAn.set(i, monAn);
+            dsMonAn.set(i, monAn); //cập nhật arraylist ở BUS
         
     }
 
@@ -68,9 +71,11 @@ public class MonAnBUS {
         }
         return 0;
     }
+
     public ArrayList<MonAnDTO> getMonAnDTO() {
         return dsMonAn;
     }
+
     public MonAnDTO getMonAnDTO(String idmonan) {
         for (MonAnDTO maDTO : dsMonAn) {
             if (maDTO.getIDMonAn().equals(idmonan)) {

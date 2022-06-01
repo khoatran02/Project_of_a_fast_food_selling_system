@@ -20,10 +20,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- *
- * @author Nguyen
- */
+
 //class mở đầu khi form đăng nhập được gọi , nơi sườn của cả bài
 public class GUImenu extends JFrame{
     
@@ -129,7 +126,7 @@ public class GUImenu extends JFrame{
         content.setPreferredSize(new Dimension(width_content,0));
         add(content,BorderLayout.CENTER);
 
-        addEvent();
+         addEvent();
         setSize(width,height);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -164,13 +161,8 @@ public class GUImenu extends JFrame{
         JPanel menu=new JPanel(null);
         
         //JLabel logo=new JLabel(Tool.showIcon(width_menu, 200, "src/Images/Icon/Logo-Design-removebg-preview.png"));
-<<<<<<< HEAD
         //  JLabel logo=new JLabel(Tool.showIcon(width_menu, 200, "src/Images/Icon/ginger-tea.png"));
          JLabel logo=new JLabel(Tool.showIcon(width_menu-30, 150, "src/Images/Icon/LogoFood.png"));
-=======
-         JLabel logo=new JLabel(Tool.showIcon(width_menu, 200, "src/Images/Icon/ginger-tea.png"));
-        // JLabel logo=new JLabel(Tool.showIcon(width_menu-30, 150, "src/Images/Icon/fast-food.png"));
->>>>>>> 2b67e299da198736e4e90171b2bbd0dbc7755e1c
         logo.setBounds(0, 0, width_menu, 200);
         //Sự kiện khi ấn vào logo thì hiện tên 
         logo.addMouseListener(new MouseAdapter(){

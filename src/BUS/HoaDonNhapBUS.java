@@ -10,10 +10,7 @@ import DTO.HoaDonNhapDTO;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-/**
- *
- * @author HP
- */
+
 public class HoaDonNhapBUS {
    public static ArrayList<HoaDonNhapDTO> dshdn;
    public HoaDonNhapBUS()

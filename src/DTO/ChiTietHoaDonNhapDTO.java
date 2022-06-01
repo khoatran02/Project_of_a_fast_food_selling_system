@@ -5,10 +5,7 @@
  */
 package DTO;
 
-/**
- *
- * @author HP
- */
+
 public class ChiTietHoaDonNhapDTO {
     private String IDHoaDonNhap,IDNguyenLieu;
     private int SoLuong;

@@ -11,10 +11,7 @@ import DTO.NguyenLieuDTO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author HP
- */
+
 public class NguyenLieuBUS {
    public static ArrayList<NguyenLieuDTO> dsnl;
    public NguyenLieuBUS()

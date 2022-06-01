@@ -9,10 +9,7 @@ import DAO.CongThucDAO;
 import DTO.CongThucDTO;
 import java.util.ArrayList;
 
-/**
- *
- * @author HP
- */
+
 public class CongThucBUS {
     public static ArrayList<CongThucDTO> CT;
 
@@ -22,11 +19,12 @@ public class CongThucBUS {
 
     public void docCT() throws Exception //cần ghi lại khi qua class khác
     {
-        CongThucDAO ct = new CongThucDAO();
+        CongThucDAO data = new CongThucDAO();
         if (CT == null) {
             CT = new ArrayList<>();
-            CT = ct.docCT(); // đọc dữ liệu từ database
         }
+        CT.clear();
+        CT = data.docCT(); // đọc dữ liệu từ database
         
 
     }

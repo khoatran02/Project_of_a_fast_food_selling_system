@@ -33,9 +33,9 @@ public class GUIMyTable extends JPanel {
     public JScrollPane pane;
 
 
-    // Tạo Menu cho popup menu
-    JMenuItem menuThem,menuSua, menuXoa;
-    JPopupMenu popup;
+    // // Tạo Menu cho popup menu
+    // JMenuItem menuThem,menuSua, menuXoa;
+    // JPopupMenu popup;
 
 
     public GUIMyTable() {
@@ -106,21 +106,24 @@ public class GUIMyTable extends JPanel {
         sorter.setSortKeys(sortKeys);
     }
 
-    public void addRow(String[] data) {
-        tbModel.addRow(data);
+    public void addRow(String[] strings) // addRow tổng quát
+    {
+        tbModel.addRow(strings);
     }
+
     public void addRow(MonAnDTO data)   // Add row món ăn
     {
         addRow(new String[]{
                     data.getIDMonAn(),
                     data.getTenMonAn(),
                     data.getDonViTinh(),
-                    String.valueOf(data.getDonGia()),
+                    String.valueOf((int)data.getDonGia()),
                     data.getHinhAnh(),
                     data.getLoai(),
                     String.valueOf(data.getSoLuong())
                 });
     }
+
     public void addRow(NguyenLieuDTO data)  // Add row nguyên liệu
     {
         addRow(new String[]{

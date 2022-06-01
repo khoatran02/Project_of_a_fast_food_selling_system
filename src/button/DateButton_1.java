@@ -9,10 +9,7 @@ import com.github.lgooddatepicker.components.DatePicker;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-/**
- *
- * @author DELL
- */
+
 public class DateButton_1 extends JButton {
     
     public DateButton_1(DatePicker dp) {

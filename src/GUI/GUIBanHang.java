@@ -36,10 +36,7 @@ import javax.swing.plaf.FontUIResource;
 
 import org.apache.poi.ss.formula.functions.T;
 
-/**
- *
- * @author Nguyen
- */
+
 //Class này được kế thừa từ GUIFormBanNhap , các bố cục đã được sắp xếp sẵn ở bên đó
 public class GUIBanHang extends GUIFormBanNhap{
     //Tạo mảng tiêu đề của bảng món ăn

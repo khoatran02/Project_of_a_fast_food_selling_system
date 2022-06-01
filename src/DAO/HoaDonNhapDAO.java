@@ -11,10 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Phat
- */
+
 public class HoaDonNhapDAO {
  
     ConnectDB connection = new ConnectDB();

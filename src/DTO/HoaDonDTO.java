@@ -7,10 +7,7 @@ package DTO;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author Nguyen
- */
+
 public class HoaDonDTO {
     private String IDHoaDon,IDNhanVien,IDKhachHang,IDKhuyenMai,TrangThai;
     private float TienGiamGia,TongTien;

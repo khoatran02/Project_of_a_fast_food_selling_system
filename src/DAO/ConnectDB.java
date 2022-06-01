@@ -47,7 +47,8 @@ public class ConnectDB {
     }
         return this.st;
     }
-     public ResultSet excuteQuery(String qry) throws Exception{
+
+    public ResultSet excuteQuery(String qry) throws Exception{
         try{
             this.rs = this.getStatement().executeQuery(qry);
         } catch (Exception ex){
@@ -55,6 +56,7 @@ public class ConnectDB {
     }
         return this.rs;
     }
+    
     public int ExecuteUpdate(String qry) throws Exception{
         int res =0;
         try{

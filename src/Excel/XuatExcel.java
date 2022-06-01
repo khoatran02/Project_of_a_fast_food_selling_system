@@ -23,10 +23,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 
-/**
- *
- * @author Admin
- */
+
 public class XuatExcel {
 
     FileDialog fd = new FileDialog(new JFrame(), "Xuất excel", FileDialog.SAVE);

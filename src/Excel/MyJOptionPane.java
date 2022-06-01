@@ -17,10 +17,7 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 import javax.swing.JPanel;
 
-/**
- *
- * @author DELL
- */
+
 public class MyJOptionPane extends JOptionPane {
     
     JComboBox<String> cb = new JComboBox<>(new String[] {"Ghi đè", "Bỏ qua", "Ghi đè tất cả", "Bỏ qua tất cả"});

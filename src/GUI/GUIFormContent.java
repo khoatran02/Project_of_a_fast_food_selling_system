@@ -18,10 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Nguyen
- */
+
 //Class này tạo bố cục cho các bảng khác
 public class GUIFormContent extends JPanel {
     protected JPanel CongCu,TimKiem,Table;
