@@ -67,7 +67,7 @@ public class GUINhanVien extends GUIFormContent {
     private JComboBox cbGioiTinh_Them,cbGioiTinh_Sua;
     private String array_GioiTinh[]={"Nam","Nữ"};
     private JComboBox cbChucVu_Them,cbChucVu_Sua;
-    private String array_ChucVu[]={"Nhân viên bán và nhập hàng","Nhân viên nhập hàng","Nhân viên bán hàng","Quản lý"};
+    private String array_ChucVu[]={"Nhân viên bán và nhập hàng","Bếp trưởng","Nhân viên chăm sóc khách hàng","Quản lý"};
 
     // Tạo Menu cho popup menu
     JMenuItem menuThem,menuSua, menuXoa;
@@ -676,21 +676,25 @@ public class GUINhanVien extends GUIFormContent {
     public String traVeMaQuyenTuChucVu(String chucVu)
     {
 
-        if(chucVu.equals("Quản lý"))
+        if(chucVu.equals("Admin"))
         {
-            return "PQ00";
+            return "PQ0";
         }
-        if(chucVu.equals("Nhân viên bán hàng"))
+        if(chucVu.equals("Nhân viên bán và nhập hàng"))
         {
             return "PQ01";
         }
-        if(chucVu.equals("Nhân viên nhập hàng"))
+        if(chucVu.equals("Bếp trưởng"))
         {
             return "PQ02";
         }
 
-        if (chucVu.equals("Nhân viên bán và nhập hàng")){
+        if (chucVu.equals("Nhân viên chăm sóc khách hàng")){
             return "PQ03";
+        }
+
+        if (chucVu.equals("Quản lý")){
+            return "PQ04";
         }
         
         return null;

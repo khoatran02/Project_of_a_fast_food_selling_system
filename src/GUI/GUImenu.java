@@ -161,8 +161,11 @@ public class GUImenu extends JFrame{
         JPanel menu=new JPanel(null);
         
         //JLabel logo=new JLabel(Tool.showIcon(width_menu, 200, "src/Images/Icon/Logo-Design-removebg-preview.png"));
+
         //  JLabel logo=new JLabel(Tool.showIcon(width_menu, 200, "src/Images/Icon/ginger-tea.png"));
          JLabel logo=new JLabel(Tool.showIcon(width_menu-30, 150, "src/Images/Icon/LogoFood.png"));
+
+
         logo.setBounds(0, 0, width_menu, 200);
         //Sự kiện khi ấn vào logo thì hiện tên 
         logo.addMouseListener(new MouseAdapter(){

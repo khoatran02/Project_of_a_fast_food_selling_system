@@ -126,7 +126,7 @@ public class TaiKhoanBUS {
         {
             return false;
         }
-        if((chucVu.equals("Nhân viên") && maQuyen.equals("PQ0")) || (chucVu.equals("Nhân viên") && maQuyen.equals("PQ1")) )
+        if((chucVu.equals("Nhân viên") && maQuyen.equals("PQ0"))  )
         {
             return false;
         }
